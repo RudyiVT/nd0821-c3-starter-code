@@ -32,4 +32,4 @@ def test_inference():
 
     preds = inference(model, X_test)
 
-    assert (preds == np.array(['a', 'a'])).all()
+    assert (preds == np.array(['b', 'a'])).all()
