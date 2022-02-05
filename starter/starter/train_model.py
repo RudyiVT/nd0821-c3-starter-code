@@ -10,6 +10,7 @@ from sklearn.model_selection import train_test_split
 def process_data():
     pass
 
+
 data = pd.read_csv("../data/census.csv")
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
