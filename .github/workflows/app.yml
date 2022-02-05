@@ -32,4 +32,4 @@ jobs:
         aws-region: us-east-2
     - name: dvc
       run: |
-        dvc pull
+        dvc pull -r s3-remote
