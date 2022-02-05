@@ -3,7 +3,6 @@ from sklearn.ensemble import RandomForestClassifier
 from starter.starter.ml.model import train_model, compute_model_metrics, inference
 
 
-
 def test_train_model():
     # testing train_model function
     X = np.array([[0, 1, 0, 2], [3, 5, 10, 2]])
