@@ -1,8 +1,14 @@
+import pandas as pd
 from sklearn.metrics import fbeta_score, precision_score, recall_score
+from sklearn.ensemble import RandomForestClassifier
+import numpy as np
+import yaml
+from sklearn.model_selection import train_test_split
+from .data import process_data
 
 
 # Optional: implement hyperparameter tuning.
-def train_model(X_train, y_train):
+def train_model(X_train: np.array, y_train: np.array) -> RandomForestClassifier:
     """
     Trains a machine learning model and returns it.
 
@@ -18,10 +24,12 @@ def train_model(X_train, y_train):
         Trained machine learning model.
     """
 
-    pass
+    model = RandomForestClassifier()
+    model.fit(X_train, y_train)
+    return model
 
 
-def compute_model_metrics(y, preds):
+def compute_model_metrics(y: np.array, preds: np.array) -> (float, float, float):
     """
     Validates the trained machine learning model using precision, recall, and F1.
 
@@ -43,12 +51,12 @@ def compute_model_metrics(y, preds):
     return precision, recall, fbeta
 
 
-def inference(model, X):
+def inference(model: RandomForestClassifier, X: np.array) -> np.array:
     """ Run model inferences and return the predictions.
 
     Inputs
     ------
-    model : ???
+    model : RandomForestClassifier
         Trained machine learning model.
     X : np.array
         Data used for prediction.
@@ -57,4 +65,36 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    pass
+    return model.predict(X)
+
+
+def get_model_performance_on_slice(data: pd.DataFrame, sclice_columns: list = None):
+    with open("../config.yml") as fp:
+        model_config = yaml.load(fp, Loader=yaml.FullLoader)["modeling"]
+
+    # split dataset on train and test parts
+    if sclice_columns is not None:
+        data = data[sclice_columns]
+    train_data, test_data = train_test_split(data, test_size=model_config["test_size"])
+
+    # preprocess training dataset
+    X_train, y_train, encoder, lb = process_data(
+        X=train_data,
+        categorical_features=model_config["categorical_fature_names"],
+        label=model_config["target_feature_name"],
+        training=True,
+    )
+
+    # fit model
+    model = train_model(X_train, y_train)
+
+    # inference on test dataset
+    X_test, y_test, _, _ = process_data(
+        X=train_data,
+        categorical_features=model_config["categorical_fature_names"],
+        label=model_config["target_feature_name"],
+        training=False,
+    )
+
+    test_preds = inference(model, X_test)
+    return compute_model_metrics(y_test, test_preds)

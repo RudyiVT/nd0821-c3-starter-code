@@ -1,14 +1,15 @@
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
+import pandas as pd
 
 
 def process_data(
-        X,
-        categorical_features=[],
-        label=None,
-        training=True,
-        encoder=None,
-        lb=None):
+        X: pd.DataFrame,
+        categorical_features: list = [],
+        label: str = None,
+        training: bool = True,
+        encoder: OneHotEncoder = None,
+        lb: LabelBinarizer = None):
     """ Process the data used in the machine learning pipeline.
 
     Processes the data using one hot encoding

@@ -1,35 +1,35 @@
 # Script to train machine learning model.
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import yaml
+import pickle
 
-# Add the necessary imports for the starter code.
-
-# Add code to load in the data.
-
-
-def process_data():
-    pass
+from ml.data import process_data
+from ml.model import train_model
 
 
-data = pd.read_csv("../data/census.csv")
+if __name__ == "__main__":
+    # Load cleaned dataset
+    data = pd.read_csv("../data/census_cleaned.csv.csv")
 
-# Optional enhancement, use K-fold cross validation instead of a train-test split.
-train, test = train_test_split(data, test_size=0.20)
+    # Load configs for training pipeline
+    with open("../config.yml") as fp:
+        model_config = yaml.load(fp, Loader=yaml.FullLoader)["modeling"]
 
-cat_features = [
-    "workclass",
-    "education",
-    "marital-status",
-    "occupation",
-    "relationship",
-    "race",
-    "sex",
-    "native-country",
-]
-X_train, y_train, encoder, lb = process_data(
-    train, categorical_features=cat_features, label="salary", training=True
-)
+    # split dataset on train and test parts
+    train_data, test_data = train_test_split(data, test_size=model_config["test_size"])
 
-# Proces the test data with the process_data function.
+    # preprocess training dataset
+    X_train, y_train, encoder, lb = process_data(
+        X=train_data,
+        categorical_features=model_config["categorical_fature_names"],
+        label=model_config["target_feature_name"],
+        training=True,
+    )
 
-# Train and save a model.
+    # fit model
+    model = train_model(X_train, y_train)
+
+    # save model
+    with open("../model/model.pkl", 'wb') as fp:
+        pickle.dump(model, fp)
