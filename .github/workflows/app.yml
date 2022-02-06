@@ -21,6 +21,9 @@ jobs:
     - name: Analysing the code with flake8
       run: |
         flake8 $(git ls-files '*.py')
+    - name: dvc
+      run: |
+        dvc pull -r s3-remote -f
     - name: Testing
       run: |
         pytest
@@ -30,6 +33,4 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-2
-    - name: dvc
-      run: |
-        dvc pull -r s3-remote
+
