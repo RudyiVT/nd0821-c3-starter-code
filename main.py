@@ -1,16 +1,23 @@
+import os
 import yaml
 import pickle
 import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
-from starter.ml.data import process_data
-from starter.ml.model import inference
+from census.starter.ml.data import process_data
+from census.starter.ml.model import inference
 from pathlib import Path
 
-with open(Path.cwd() / 'model' / 'model.pkl', 'rb') as fp:
+if "DYNO" in os.environ and os.path.isdir(".dvc"):
+    os.system("dvc config core.no_scm true")
+    if os.system("dvc pull") != 0:
+        exit("dvc pull failed")
+    os.system("rm -r .dvc .apt/usr/lib/dvc")
+
+with open(Path.cwd() / 'census' / 'model' / 'model.pkl', 'rb') as fp:
     model_artifacts = pickle.load(fp)
 
-with open(Path.cwd() / 'config.yml') as fp:
+with open(Path.cwd() / 'census' / 'config.yml') as fp:
     model_config = yaml.load(fp, Loader=yaml.FullLoader)["modeling"]
 
 

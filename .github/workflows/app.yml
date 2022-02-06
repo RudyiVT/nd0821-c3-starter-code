@@ -23,8 +23,7 @@ jobs:
         flake8 $(git ls-files '*.py')
     - name: Testing
       run: |
-        cd census
-        python -m pytest
+        pytest
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
