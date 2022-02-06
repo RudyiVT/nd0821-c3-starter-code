@@ -1,5 +1,4 @@
 creds.py
 .idea\
 *.csv
-*.pkl
 __pycache__/

@@ -5,8 +5,7 @@ import yaml
 import pickle
 
 from ml.data import process_data
-from ml.model import train_model
-
+from ml.model import train_model, compute_model_metrics
 
 if __name__ == "__main__":
     # Load cleaned dataset
@@ -29,6 +28,21 @@ if __name__ == "__main__":
 
     # fit model
     model = train_model(X_train, y_train)
+
+    # preprocess testing dataset
+    X_test, y_test, encoder, lb = process_data(
+        X=test_data,
+        categorical_features=model_config["categorical_fature_names"],
+        label=model_config["target_feature_name"],
+        encoder=encoder,
+        lb=lb,
+        training=False,
+    )
+
+    preds = model.predict(X_test)
+
+    precision, recall, fbeta = compute_model_metrics(y_test, preds)
+    print(f"precision: {precision}, recall: {recall}, fbeta: {fbeta}")
 
     # save model and encoders
     with open("../model/model.pkl", 'wb') as fp:

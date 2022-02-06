@@ -7,9 +7,6 @@ from pydantic import BaseModel, Field
 from census.starter.ml.data import process_data
 from census.starter.ml.model import inference
 from pathlib import Path
-from dvc.repo import Repo
-
-resp = Repo().pull(remote='s3-remote')
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")
