@@ -3,8 +3,12 @@ Working in a command line environment is recommended for ease of use with git an
 
 # Instructions
 To push data `dvc push -r s3-remote`, to pull `dvc pull -r s3-remote`
-command to set aws creds to heroku `heroku config:set AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... --app super-cool-demo-app-rudyi
-`
+
+create heroku app `heroku create census-prediction-api --buildpack heroku/python`
+command to set aws creds to heroku `heroku config:set AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... --app app_name`
+buildpacks `heroku buildpacks --app census-prediction-api`
+
+
 
 # Environment Set up
 * Download and install conda if you don’t have it already.
