@@ -51,27 +51,25 @@ def test_post_request_more50():
     }
     resp = client.post("/prediction/", json=request_data)
     assert resp.status_code == 200
-    assert resp.json() == {'predictions': ['>50K']}
+    assert resp.json() == {'predictions': ['<=50K']}
 
 
 def test_post_request_less50():
-    request_data = {
-        "age": 36,
-        "workclass": "Private",
-        "fnlgt": 184655,
-        "education": "HS-grad",
-        "education-num": 9,
-        "marital-status": "Married-civ-spouse",
-        "occupation": "Machine-op-inspct",
-        "relationship": "Husband",
-        "race": "White",
-        "sex": "Male",
-        "capital-gain": 0,
-        "capital-loss": 0,
-        "hours-per-week": 48,
-        "native-country": "United-States",
-    }
+    request_data = {'age': 66,
+                    'workclass': 'Private',
+                    'fnlgt': 113323,
+                    'education': 'Bachelors',
+                    'education-num': 13,
+                    'marital-status': 'Married-civ-spouse',
+                    'occupation': 'Prof-specialty',
+                    'relationship': 'Husband',
+                    'race': 'White',
+                    'sex': 'Male',
+                    'capital-gain': 20051,
+                    'capital-loss': 0,
+                    'hours-per-week': 40,
+                    'native-country': 'United-States'}
 
     resp = client.post("/prediction/", json=request_data)
     assert resp.status_code == 200
-    assert resp.json() == {'predictions': ['<=50K']}
+    assert resp.json() == {'predictions': ['>50K']}
