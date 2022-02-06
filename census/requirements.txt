@@ -1,0 +1,12 @@
+numpy
+pandas
+scikit-learn
+pytest
+requests
+fastapi==0.63.0
+uvicorn
+gunicorn
+flake8==4.0.1
+autopep8==1.6.0
+dvc[s3]
+pydantic
