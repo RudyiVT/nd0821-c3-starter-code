@@ -5,11 +5,12 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from starter.ml.data import process_data
 from starter.ml.model import inference
+from pathlib import Path
 
-with open("model/model.pkl", 'rb') as fp:
+with open(Path.cwd() / 'model' / 'model.pkl', 'rb') as fp:
     model_artifacts = pickle.load(fp)
 
-with open("config.yml") as fp:
+with open(Path.cwd() / 'config.yml') as fp:
     model_config = yaml.load(fp, Loader=yaml.FullLoader)["modeling"]
 
 
