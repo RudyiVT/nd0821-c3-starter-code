@@ -1,5 +1,8 @@
 # Instructions
 
+[Github project repo](https://github.com/RudyiVT/nd0821-c3-starter-code)
+[Live API endpoint](https://census-prediction-api.herokuapp.com)
+
 ## S3
 To push data `dvc push -r s3-remote`, to pull `dvc pull -r s3-remote`
 
