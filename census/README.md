@@ -10,6 +10,8 @@ command to set aws creds to heroku `heroku config:set AWS_ACCESS_KEY_ID=... AWS_
 
 buildpacks `heroku buildpacks --app census-prediction-api`
 
+`heroku git:remote -a census-prediction-api `
+
 push heroku `git push heroku master`
 
 
