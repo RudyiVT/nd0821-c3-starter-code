@@ -21,6 +21,9 @@ jobs:
     - name: Analysing the code with flake8
       run: |
         flake8 $(git ls-files '*.py')
+    - name: pull data from dvc
+      run: |
+        dvc pull -r s3-remote
     - name: Testing
       run: |
         pytest
