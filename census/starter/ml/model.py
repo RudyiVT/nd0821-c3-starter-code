@@ -75,7 +75,7 @@ def get_model_performance_on_slice(data: pd.DataFrame, sclice_columns: list = No
     # split dataset on train and test parts
     if sclice_columns is not None:
         data = data[sclice_columns]
-    train_data, test_data = train_test_split(data, test_size=model_config["test_size"])
+    train_data, test_data = train_test_split(data, test_size=model_config["test_size"], random_state=43)
 
     # preprocess training dataset
     X_train, y_train, encoder, lb = process_data(

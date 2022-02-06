@@ -16,7 +16,7 @@ if __name__ == "__main__":
         model_config = yaml.load(fp, Loader=yaml.FullLoader)["modeling"]
 
     # split dataset on train and test parts
-    train_data, test_data = train_test_split(data, test_size=model_config["test_size"])
+    train_data, test_data = train_test_split(data, test_size=model_config["test_size"], random_state=43)
 
     # preprocess training dataset
     X_train, y_train, encoder, lb = process_data(
