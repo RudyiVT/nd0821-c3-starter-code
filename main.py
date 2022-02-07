@@ -37,6 +37,26 @@ class FeatureVector(BaseModel):
     hours_per_week: int = Field(alias="hours-per-week")
     native_country: str = Field(alias="native-country")
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "age": 45,
+                "workclass": "Private",
+                "fnlgt": 88500,
+                "education": "Some-college",
+                "education-num": 10,
+                "marital-status": "Married-civ-spouse",
+                "occupation": "Machine-op-inspct",
+                "relationship": "Husband",
+                "race": "White",
+                "sex": "Male",
+                "capital-gain": 0,
+                "capital-loss": 0,
+                "hours-per-week": 44,
+                "native-country": "United-States",
+            }
+        }
+
 
 app = FastAPI()
 

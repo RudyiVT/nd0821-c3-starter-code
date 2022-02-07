@@ -68,13 +68,14 @@ def inference(model: RandomForestClassifier, X: np.array) -> np.array:
     return model.predict(X)
 
 
-def get_model_performance_on_slice(data: pd.DataFrame, sclice_columns: list = None):
+def get_model_performance_on_slice(data: pd.DataFrame, slice_columns: list = None):
     with open("../config.yml") as fp:
         model_config = yaml.load(fp, Loader=yaml.FullLoader)["modeling"]
 
     # split dataset on train and test parts
-    if sclice_columns is not None:
-        data = data[sclice_columns]
+    if slice_columns is not None:
+        columns = slice_columns + [model_config["target_feature_name"]]
+        data = data[columns]
     train_data, test_data = train_test_split(data, test_size=model_config["test_size"], random_state=43)
 
     # preprocess training dataset
@@ -90,9 +91,11 @@ def get_model_performance_on_slice(data: pd.DataFrame, sclice_columns: list = No
 
     # inference on test dataset
     X_test, y_test, _, _ = process_data(
-        X=train_data,
+        X=test_data,
         categorical_features=model_config["categorical_fature_names"],
         label=model_config["target_feature_name"],
+        encoder=encoder,
+        lb=lb,
         training=False,
     )
 

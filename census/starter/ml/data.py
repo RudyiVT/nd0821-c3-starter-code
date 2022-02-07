@@ -56,6 +56,7 @@ def process_data(
     else:
         y = np.array([])
 
+    categorical_features = [x for x in categorical_features if x in X.columns]
     X_categorical = X[categorical_features].values
     X_continuous = X.drop(*[categorical_features], axis=1)
 

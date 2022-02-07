@@ -1,0 +1,8 @@
+precision: 0.564,recall: 0.086, fbeta: 0.149 for one feature workclass
+precision: 0.578,recall: 0.186, fbeta: 0.282 for one feature education
+precision: 1.0,recall: 0.0, fbeta: 0.0 for one feature marital-status
+precision: 1.0,recall: 0.0, fbeta: 0.0 for one feature occupation
+precision: 1.0,recall: 0.0, fbeta: 0.0 for one feature relationship
+precision: 1.0,recall: 0.0, fbeta: 0.0 for one feature race
+precision: 1.0,recall: 0.0, fbeta: 0.0 for one feature sex
+precision: 1.0,recall: 0.0, fbeta: 0.0 for one feature native-country

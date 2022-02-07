@@ -5,7 +5,7 @@ import yaml
 import pickle
 
 from ml.data import process_data
-from ml.model import train_model, compute_model_metrics
+from ml.model import train_model, compute_model_metrics, get_model_performance_on_slice
 
 if __name__ == "__main__":
     # Load cleaned dataset
@@ -53,3 +53,15 @@ if __name__ == "__main__":
             "feature_names": train_data.drop(columns=[model_config["target_feature_name"]]).columns,
         }
         pickle.dump(model_arfitact, fp)
+
+    # train different models in slices
+    with open("slice_output.txt", 'w+') as fp:
+        for cat_column_name in model_config["categorical_fature_names"]:
+            precision, recall, fbeta = get_model_performance_on_slice(data, slice_columns=[cat_column_name])
+            fp.write(
+                f"precision: {round(precision, 3)},"
+                f"recall: {round(recall, 3)}, "
+                f"fbeta: {round(fbeta, 3)} "
+                f"for one feature {cat_column_name}"
+            )
+            fp.write("\n")

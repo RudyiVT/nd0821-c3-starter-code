@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ddcaf732-a05e-4ea5-b89e-97b6afffacbe" name="Default Changelist" comment="" />
+    <list default="true" id="ddcaf732-a05e-4ea5-b89e-97b6afffacbe" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/census/screenshots/continuous_deloyment.png" beforeDir="false" afterPath="$PROJECT_DIR$/census/screenshots/continuous_deloyment.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/census/starter/ml/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/census/starter/ml/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/census/starter/ml/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/census/starter/ml/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/census/starter/train_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/census/starter/train_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,11 +36,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/census/model" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/census" />
       <recent name="$PROJECT_DIR$/census/starter" />
       <recent name="$PROJECT_DIR$/census/tests" />
-      <recent name="$PROJECT_DIR$/starter" />
     </key>
   </component>
   <component name="RunManager" selected="Python.train_model">
