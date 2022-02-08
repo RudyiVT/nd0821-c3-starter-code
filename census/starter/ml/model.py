@@ -5,6 +5,7 @@ import numpy as np
 import yaml
 from sklearn.model_selection import train_test_split
 from .data import process_data
+import pickle
 
 
 # Optional: implement hyperparameter tuning.
@@ -68,36 +69,28 @@ def inference(model: RandomForestClassifier, X: np.array) -> np.array:
     return model.predict(X)
 
 
-def get_model_performance_on_slice(data: pd.DataFrame, slice_columns: list = None):
+def get_model_performance_on_slice(data: pd.DataFrame, slice_column: str = 'education'):
     with open("../config.yml") as fp:
         model_config = yaml.load(fp, Loader=yaml.FullLoader)["modeling"]
 
-    # split dataset on train and test parts
-    if slice_columns is not None:
-        columns = slice_columns + [model_config["target_feature_name"]]
-        data = data[columns]
-    train_data, test_data = train_test_split(data, test_size=model_config["test_size"], random_state=43)
+    with open("../model/model.pkl", 'rb') as fp:
+        model_artifacts = pickle.load(fp)
 
-    # preprocess training dataset
-    X_train, y_train, encoder, lb = process_data(
-        X=train_data,
-        categorical_features=model_config["categorical_fature_names"],
-        label=model_config["target_feature_name"],
-        training=True,
-    )
+    slice_results = []
+    for slice_value in data[slice_column].unique():
+        slice_data = data.copy()
+        slice_data[slice_column] = slice_value
+        # preprocess training dataset
+        X, y, _, _ = process_data(
+            X=slice_data,
+            categorical_features=model_config["categorical_fature_names"],
+            label=model_config["target_feature_name"],
+            encoder=model_artifacts["oh_encoder"],
+            lb=model_artifacts["lb"],
+            training=False,
+        )
 
-    # fit model
-    model = train_model(X_train, y_train)
-
-    # inference on test dataset
-    X_test, y_test, _, _ = process_data(
-        X=test_data,
-        categorical_features=model_config["categorical_fature_names"],
-        label=model_config["target_feature_name"],
-        encoder=encoder,
-        lb=lb,
-        training=False,
-    )
-
-    test_preds = inference(model, X_test)
-    return compute_model_metrics(y_test, test_preds)
+        test_preds = inference(model_artifacts["model"], X)
+        precision, recall, fbeta = compute_model_metrics(y, test_preds)
+        slice_results.append((slice_column, slice_value, precision, recall, fbeta))
+    return slice_results

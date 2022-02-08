@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ddcaf732-a05e-4ea5-b89e-97b6afffacbe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/census/screenshots/continuous_deloyment.png" beforeDir="false" afterPath="$PROJECT_DIR$/census/screenshots/continuous_deloyment.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/census/starter/ml/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/census/starter/ml/data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/census/starter/ml/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/census/starter/ml/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/census/starter/slice_output.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/census/starter/train_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/census/starter/train_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +21,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="24jCiKxz9WKbdKT7knRCt1QVG6x" />
   <component name="ProjectViewState">
@@ -103,5 +109,16 @@
       <updated>1644134734745</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

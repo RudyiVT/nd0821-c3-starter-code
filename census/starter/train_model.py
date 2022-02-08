@@ -55,13 +55,16 @@ if __name__ == "__main__":
         pickle.dump(model_arfitact, fp)
 
     # train different models in slices
+
     with open("slice_output.txt", 'w+') as fp:
         for cat_column_name in model_config["categorical_fature_names"]:
-            precision, recall, fbeta = get_model_performance_on_slice(data, slice_columns=[cat_column_name])
-            fp.write(
-                f"precision: {round(precision, 3)},"
-                f"recall: {round(recall, 3)}, "
-                f"fbeta: {round(fbeta, 3)} "
-                f"for one feature {cat_column_name}"
-            )
-            fp.write("\n")
+            slice_results = get_model_performance_on_slice(data, slice_column=cat_column_name)
+            for (slice_column, slice_value, precision, recall, fbeta) in slice_results:
+                fp.write(
+                    f"slice_column: {slice_column},\t"
+                    f"slice_value: {slice_value},\t"
+                    f"precision: {round(precision, 3)},\t"
+                    f"recall: {round(recall, 3)},\t"
+                    f"fbeta: {round(fbeta, 3)}"
+                )
+                fp.write("\n")
