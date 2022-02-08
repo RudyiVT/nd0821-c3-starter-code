@@ -3,7 +3,6 @@ from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 import numpy as np
 import yaml
-from sklearn.model_selection import train_test_split
 from .data import process_data
 import pickle
 

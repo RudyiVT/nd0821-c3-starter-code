@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddcaf732-a05e-4ea5-b89e-97b6afffacbe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/census/starter/ml/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/census/starter/ml/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/census/starter/slice_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census/starter/train_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/census/starter/train_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
